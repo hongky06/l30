@@ -127,6 +127,30 @@ function checksoluong(input) {
                     
                         console.table(shopphone);
                         break;
+                        case 7:
+                            if (shopphone.length === 0) {
+                                alert("Kho hàng trống!");
+                            } else {
+                                let tongGiaTri = shopphone.reduce((sum, sp) => sum + sp.monny * sp.quantity, 0);
+                                alert(`Tổng giá trị hàng trong kho: ${tongGiaTri.toLocaleString()} VND`);
+                            }
+                            break;
+                        
+                        case 8:
+                            if (shopphone.length === 0) {
+                                alert("Kho hàng trống!");
+                            } else {
+                                let thongKe = {};
+                                shopphone.forEach(sp => {
+                                    thongKe[sp.phone_company] = (thongKe[sp.phone_company] || 0) + sp.quantity;
+                                });
+                        
+                                console.log("Tổng số lượng điện thoại theo hãng:");
+                                for (let hang in thongKe) {
+                                    console.log(`${hang}: ${thongKe[hang]} chiếc`);
+                                }
+                            }
+                            break;
                         
         }
     }
